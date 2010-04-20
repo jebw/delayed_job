@@ -15,7 +15,7 @@ module Delayed
 
 	    def schedule
         if @from_now.respond_to?(:call)
-          @from_now.call
+          @from_now.call(self)
         elsif @from_now.respond_to?(:from_now)
           @from_now.from_now
         else
