@@ -29,7 +29,7 @@ module Delayed
 	  end
 	  
     def schedule!
-      Delayed::Job.enqueue self, 0, self.class.schedule if self.class.schedule
+      Delayed::Job.enqueue self, :priority => 0, :run_at => self.class.schedule if self.class.schedule
     end
 
 	  def perform_with_schedule
